@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './routes/Home/Home'
+import { AppRoutes } from './routes/routesDefinition'
 
 import './App.css'
-import Home from './routes/Home/Home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +12,7 @@ function App() {
     <main>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path={AppRoutes.Home} element={<Home />} />
         </Routes>
       </BrowserRouter>
     </main>
