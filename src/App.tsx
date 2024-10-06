@@ -8,8 +8,10 @@ import espMessages from './locales/es.json'
 import { useSelector } from 'react-redux'
 import { IntlProvider } from 'react-intl'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import WebSocketProvider from './Websockets/WebSocketProvider'
 
 import './App.css'
+
 
 
 export const ModalContext = createContext<ModalContextType | undefined>(undefined)
@@ -22,6 +24,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <IntlProvider locale={language === 'en' ? 'en' : 'es'} messages={language === 'en' ? enMessages : espMessages}>
+        <WebSocketProvider>
         <ModalContext.Provider value={{ showModal, setShowModal }}>
           <main>
             <BrowserRouter>
@@ -31,6 +34,7 @@ function App() {
             </BrowserRouter>
           </main>
         </ModalContext.Provider>
+        </WebSocketProvider>
       </IntlProvider>
     </QueryClientProvider>
   )
